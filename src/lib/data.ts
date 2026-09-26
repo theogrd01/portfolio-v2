@@ -3,6 +3,7 @@
 
 export const profile = {
   name: "Théo Garde",
+  portrait: "/portrait.jpg",
   role: "Étudiant développeur — Epitech Strasbourg",
   promo: "Promotion 2028",
   location: "Strasbourg, France",

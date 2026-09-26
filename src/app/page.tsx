@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { ThreeHero } from "@/components/three/ThreeHero";
@@ -34,7 +35,16 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-10 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-4 lg:pt-16">
           <div className="flex flex-col justify-center">
-            <p className="eyebrow">Portfolio — {profile.promo}</p>
+            <div className="flex items-center gap-4">
+              <Image
+                src={profile.portrait}
+                alt=""
+                width={44}
+                height={44}
+                className="border border-ink"
+              />
+              <p className="eyebrow">Portfolio — {profile.promo}</p>
+            </div>
             <h1 className="mt-5 font-display text-[clamp(3.2rem,8vw,5.6rem)] font-medium leading-[0.92] tracking-tight">
               Théo&nbsp;Garde
               <br />

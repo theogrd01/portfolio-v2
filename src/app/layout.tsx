@@ -19,6 +19,10 @@ const spaceMono = Space_Mono({
 
 const SITE = "https://" + ["theo-garde", ".fr"].join("");
 
+// Exécuté avant le premier rendu : applique la classe .dark selon
+// localStorage, sinon la préférence système. Évite tout flash.
+const themeScript = '(function(){try{var t=localStorage.getItem("pf-theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark")}catch(e){}})();';
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
@@ -38,7 +42,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ecebe4",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ecebe4" },
+    { media: "(prefers-color-scheme: dark)", color: "#14151a" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -49,8 +56,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${fraunces.variable} ${spaceMono.variable}`}>
+    <html
+      lang="fr"
+      className={`${fraunces.variable} ${spaceMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <div className="grain" aria-hidden="true" />
         <NavLinks />
         {children}

@@ -10,6 +10,7 @@
   --color-accent-deep: #9c3113;
   --color-glow: #e8b53a;
   --color-line: #c9c6ba;
+  --color-band: #e2e0d5;
 
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-mono: var(--font-space-mono), ui-monospace, "Courier New", monospace;
@@ -137,3 +138,18 @@ body {
 .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+
+/* ——— mode nuit ——— */
+.dark {
+  --color-paper: #14151a;
+  --color-ink: #e9e7dd;
+  --color-ink-soft: #b9b7ac;
+  --color-muted: #8e8e96;
+  --color-faint: #75767d;
+  --color-accent: #e2663a;
+  --color-accent-deep: #f28a5c;
+  --color-glow: #e8b53a;
+  --color-line: #34363e;
+  --color-band: #1b1d22;
+}

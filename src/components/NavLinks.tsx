@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const LINKS = [
   { href: "/", label: "Accueil" },
@@ -20,7 +21,7 @@ export function NavLinks() {
   useEffect(() => setOpen(false), [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/80 bg-paper/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link href="/" className="font-mono text-sm font-bold tracking-[0.14em] uppercase">
           Théo Garde<span className="text-accent">.</span>
@@ -43,6 +44,10 @@ export function NavLinks() {
             );
           })}
         </nav>
+
+        <div className="hidden items-center gap-4 md:flex">
+          <ThemeToggle />
+        </div>
 
         <button
           type="button"
@@ -75,6 +80,9 @@ export function NavLinks() {
               </li>
             ))}
           </ul>
+          <div className="mt-4 border-t border-line pt-4">
+            <ThemeToggle />
+          </div>
         </nav>
       )}
     </header>

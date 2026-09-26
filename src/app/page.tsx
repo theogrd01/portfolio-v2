@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* ————— 02 · PROJETS SÉLECTIONNÉS ————— */}
-      <section className="border-t border-ink/80 bg-[#e2e0d5]">
+      <section className="border-t border-ink/80 bg-band">
         <div className="mx-auto max-w-6xl px-5 py-24">
           <div className="section-head">
             <span className="index">02 — Projets</span>
@@ -127,7 +127,7 @@ export default function Home() {
 
           <div className="offset-grid mt-12 grid gap-px border border-ink/80 bg-ink/80 sm:grid-cols-2">
             {projects.map((p) => (
-              <article key={p.slug} className="group bg-[#e2e0d5] p-6 sm:p-8">
+              <article key={p.slug} className="group bg-band p-6 sm:p-8">
                 <div className="flex items-baseline justify-between">
                   <span className="font-mono text-xs text-faint">{p.index}</span>
                   <span className="font-mono text-xs text-faint">{p.year}</span>

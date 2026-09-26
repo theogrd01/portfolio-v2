@@ -64,16 +64,16 @@ function Planet() {
   );
 }
 
-function Moons() {
+function Moons({ moonA, moonB }: { moonA: string; moonB: string }) {
   const group = useRef<ThreeGroup>(null);
   const moonGeo = useMemo(() => new IcosahedronGeometry(0.12, 0), []);
   const moonMatA = useMemo(
-    () => new MeshStandardMaterial({ color: GLOW, flatShading: true, roughness: 0.4 }),
-    []
+    () => new MeshStandardMaterial({ color: moonA, flatShading: true, roughness: 0.4 }),
+    [moonA]
   );
   const moonMatB = useMemo(
-    () => new MeshStandardMaterial({ color: INK, flatShading: true, roughness: 0.6 }),
-    []
+    () => new MeshStandardMaterial({ color: moonB, flatShading: true, roughness: 0.6 }),
+    [moonB]
   );
 
   useFrame((_, delta) => {
@@ -115,7 +115,18 @@ function Dust() {
   );
 }
 
-function SceneContent() {
+function ThemeBridge({ onReady }: { onReady: (v: { moonA: string; moonB: string }) => void }) {
+  useEffect(() => {
+    const s = getComputedStyle(document.documentElement);
+    onReady({
+      moonA: s.getPropertyValue("--color-glow").trim() || "#e8b53a",
+      moonB: s.getPropertyValue("--color-ink").trim() || "#191a20",
+    });
+  }, [onReady]);
+  return null;
+}
+
+function SceneContent({ themeColors }: { themeColors: { moonA: string; moonB: string } }) {
   return (
     <>
       <ambientLight intensity={0.55} />
@@ -124,7 +135,7 @@ function SceneContent() {
       <Float speed={1.4} rotationIntensity={0.25} floatIntensity={0.7}>
         <Planet />
       </Float>
-      <Moons />
+      <Moons moonA={themeColors.moonA} moonB={themeColors.moonB} />
       <Dust />
       <Stars radius={55} depth={30} count={1100} factor={3.2} saturation={0} fade speed={0.6} />
     </>
@@ -133,6 +144,7 @@ function SceneContent() {
 
 export function ThreeHero() {
   const [enabled, setEnabled] = useState(false);
+  const [themeColors, setThemeColors] = useState({ moonA: GLOW, moonB: INK });
   const canvasWrap = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -163,7 +175,8 @@ export function ThreeHero() {
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
       >
-        <SceneContent />
+        <ThemeBridge onReady={setThemeColors} />
+        <SceneContent themeColors={themeColors} />
       </Canvas>
     </div>
   );

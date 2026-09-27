@@ -18,6 +18,7 @@ Next.js 16 · React 19 · Tailwind CSS v4 · Three.js / @react-three/fiber.
 - Typo : Fraunces (display, variable opsz) × Space Mono — auto-hébergées via next/font
 - Grain fixe, bordures 1px encre, sections numérotées, grille décalée, marquee pausable
 - `prefers-reduced-motion` respecté (3D désactivée, reveal off)
+- Curseur personnalisé desktop : point d'encre + anneau qui devient carré accent (repère de coupe) sur les éléments interactifs — désactivé sur tactile et si mouvement réduit
 
 ## Contenu
 

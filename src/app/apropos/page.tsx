@@ -48,8 +48,8 @@ export default function AProposPage() {
               <Image
                 src={profile.portrait}
                 alt="Portrait de Théo Garde"
-                width={460}
-                height={460}
+                width={800}
+                height={800}
                 priority={false}
                 className="relative block w-full border border-ink object-cover"
               />

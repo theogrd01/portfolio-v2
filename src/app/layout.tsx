@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Space_Mono } from "next/font/google";
 import { NavLinks } from "@/components/NavLinks";
 import { Footer } from "@/components/Footer";
+import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -64,6 +65,7 @@ export default function RootLayout({
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <div className="grain" aria-hidden="true" />
+        <CustomCursor />
         <NavLinks />
         {children}
         <Footer />

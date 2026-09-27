@@ -51,7 +51,7 @@ export default function AProposPage() {
                 width={800}
                 height={800}
                 priority={false}
-                className="relative block w-full border border-ink object-cover"
+                className="relative z-10 block w-full border border-ink object-cover"
               />
               <figcaption className="mt-5 flex items-baseline justify-between text-[0.7rem] uppercase tracking-[0.14em] text-muted">
                 <span>{profile.name}</span>
